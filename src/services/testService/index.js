@@ -11,15 +11,23 @@ const response = ( status, data, res ) => {
 }
 
 app.get('/', async (req, res) =>{
-    const data = await user.findOne({})
-    response( 200, {success: 'error_retrieving_data', data}, res )
-    console.log("apii iss callllllllll")
+    console.log("insideeee")
+    const data = await user.find({})
+    response( 200, { data }, res )
 })  
 
 app.post('/', async (req, res) =>{
-    const data = await user.create({username: "rajesh",mobileNo: "9636777777"})
-    response( 200, {success: 'error_retrieving_data', data }, res )
-    console.log("apii iss callllllllll")
+    console.log(req.body,"insideeeeee")
+    const data = await user.findOne({})
+    response( 200, {success: 'ok', firstName: 'rajesh', lastName: 'kanann' }, res )
 })  
+
+app.post('/register', async (req, res) =>{
+    console.log(req.body,"register")
+    const { username, password, mobileno } = req.body
+    const data = await user.create({username: username,mobileNo: mobileno, password: password})
+    response( 200, {success: 'ok', firstName: data.username, lastName: '' }, res )
+})  
+
 
 export default app

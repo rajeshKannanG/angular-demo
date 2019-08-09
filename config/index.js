@@ -8,7 +8,7 @@ const cfg = config ({
     port : {
         env: 'Port',
         type: 'integer',
-        default: '8080'
+        default: '4000'
     }
 })
 

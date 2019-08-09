@@ -12,6 +12,10 @@ const schema = new Schema({
         type: Number,
         required: true
     },
+    password: {
+        type: String,
+        default: ''
+    },
     createdAt: {
         type: Date,
         default: Date.now
@@ -22,4 +26,4 @@ export class UserClass {}
 
 schema.loadClass( UserClass )
 
-export const user = mongoose.model('UserClass', schema)
+export const user = mongoose.model('User', schema)
